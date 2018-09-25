@@ -15,7 +15,6 @@ void io::readInputFile() {
 	if (file.is_open())
 	{
 		file >> G >> E >> K;
-		cout << "read G,E,K : "<<G<<" "<<E<<" "<<K<<endl;
 		for(int i=0;i<G;i++)
 		{
 			vector<int> v;
@@ -26,7 +25,6 @@ void io::readInputFile() {
 			int s,l;
 			file >> s >> l;
 			graph.at(s-1).push_back(l-1);
-			cout<<" edge added : "<<s-1<<" "<<l-1<<endl;
 		}
 	}
 	else 
@@ -55,25 +53,59 @@ void io::writeInputFile_SAT(vector< vector<int> > cons) {
 }
 
 vector<int> io::readOutputFile_SAT() {
-	ifstream file (inputFile);
+	ifstream file (outputFile_SAT);
 	vector<int> v;
 	if (file.is_open())
 	{
 		string s;
 		file >> s;
-		for(int i=0;i<G;i++)
-		{
-			int l
-			file >> l;
-			v.push_back(l);
+		if (s.at(0) == 'S')
+		{	
+			for(int i=0;i<(K-1)*K + G;i++)
+			{
+				int l;
+				file >> l;
+				v.push_back(l);
+			}
 		}
 	}
 	else 
 		cout << "Unable to open file"; 
+	return v;
 }
 
 void io::writeOutputFile(vector<int> subgraphs) {
-
+	vector<int> output[K];
+	for(int i=0; i<subgraphs.size(); i++)
+	{
+		if (subgraphs.at(i) > 0)
+		{
+			int m = subgraphs.at(i) - 1;
+			int a = m/K;
+			int b = m%K;
+			output[b].push_back(a);
+		}
+	}
+	ofstream file (outputFile);
+	if (file.is_open())
+	{
+		if (subgraphs.size() == 0)
+		{
+			file<<"0"<<endl;
+			return;
+		}
+		for(int i=0; i<K; i++)
+		{
+			file<<"#"<<i+1<<" "<<output[i].size()<<endl;
+			for(int j=0; j<output[i].size(); j++)
+			{
+				file<<output[i].at(j)+1<<" ";
+			}
+			file<<endl;
+		}
+	}
+	else 
+		cout << "Unable to open file";
 }
 
 vector< vector<int> > io::getGraph() {
