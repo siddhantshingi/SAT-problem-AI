@@ -14,7 +14,7 @@ class io
 	
 	public:
 	
-		string inputFile,outputFile;
+		string inputFile,outputFile,inputFile_SAT,outputFile_SAT;
 		vector< vector<int> > graph;
 		int G,E,K;
 			
@@ -28,9 +28,24 @@ class io
 		 * Generates an empty board of the given size.
 		 * @param size is the size of the board, i.e. number of hexagons.
 		 */
-		io(string inFile, string outFile);
+		io(string inFile, string outFile,string inFile_SAT, string outFile_SAT);
 
 		void readInputFile();
+
+		void writeInputFile_SAT(vector< vector<int> > subgraphs);
+
+		vector<int> readOutputFile_SAT();
+
+		void writeOutputFile();
+
+
+		vector< vector<int> > getGraph();
+
+		int getG();
+
+		int getE();
+		
+		int getK();
 		
 
 

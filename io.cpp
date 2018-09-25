@@ -3,9 +3,11 @@
 io::io () {
 }
 
-io::io (string inFile, string outFile) {
+io::io (string inFile, string outFile,string inFile_SAT, string outFile_SAT) {
 	inputFile = inFile;
 	outputFile = outFile;	
+	inputFile_SAT = inFile_SAT;
+	outputFile_SAT = outFile_SAT;	
 }
 
 void io::readInputFile() {
@@ -29,4 +31,32 @@ void io::readInputFile() {
 	}
 	else 
 		cout << "Unable to open file"; 
+}
+
+void io::writeInputFile_SAT(vector< vector<int> > subgraphs) {
+
+}
+
+vector<int> io::readOutputFile_SAT() {
+
+}
+
+void io::writeOutputFile(vector<int> subgraphs) {
+
+}
+
+vector< vector<int> > io::getGraph() {
+	return graph;
+}
+
+int io::getG() {
+	return G;
+}
+
+int io::getE() {
+	return E;
+}
+
+int io::getK() {
+	return K;
 }
