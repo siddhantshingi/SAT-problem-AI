@@ -33,12 +33,43 @@ void io::readInputFile() {
 		cout << "Unable to open file"; 
 }
 
-void io::writeInputFile_SAT(vector< vector<int> > subgraphs) {
-
+void io::writeInputFile_SAT(vector< vector<int> > cons) {
+	ofstream file (inputFile_SAT);
+	if (file.is_open())
+	{
+		file<<"p cnf "<<endl;
+		for(int i=0; i<cons.size(); i++)
+		{
+			for(int j=0; j<cons.at(i).size(); j++)
+			{
+				if (cons.at(i).at(j) >= 0)
+					file<<cons.at(i).at(j)<<" ";
+				else
+					file<<cons.at(i).at(j)<<" ";
+			}
+			file<<"0"<<endl;
+		}
+	}
+	else 
+		cout << "Unable to open file";
 }
 
 vector<int> io::readOutputFile_SAT() {
-
+	ifstream file (inputFile);
+	vector<int> v;
+	if (file.is_open())
+	{
+		string s;
+		file >> s;
+		for(int i=0;i<G;i++)
+		{
+			int l
+			file >> l;
+			v.push_back(l);
+		}
+	}
+	else 
+		cout << "Unable to open file"; 
 }
 
 void io::writeOutputFile(vector<int> subgraphs) {

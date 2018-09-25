@@ -36,7 +36,7 @@ class io
 
 		vector<int> readOutputFile_SAT();
 
-		void writeOutputFile();
+		void writeOutputFile(vector<int> subgraphs);
 
 
 		vector< vector<int> > getGraph();
