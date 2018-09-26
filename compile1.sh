@@ -1,1 +1,1 @@
-g++ -o main1 main1.cpp io.cpp constraint.cpp
+g++ -o main1 main1.cpp io.cpp constraint.cpp -g

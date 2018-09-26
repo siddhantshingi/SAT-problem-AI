@@ -39,6 +39,7 @@ class constraint
 		bool Edge(int i, int j);
 
 		vector< vector<int> > clause4(vector< vector<int> > setOfClauses);
+		void printclauses(vector<vector<int>> myvec);
 
 };
 #endif

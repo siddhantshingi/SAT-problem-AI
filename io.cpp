@@ -61,7 +61,7 @@ vector<int> io::readOutputFile_SAT() {
 		file >> s;
 		if (s.at(0) == 'S')
 		{	
-			for(int i=0;i<(K-1)*K + G;i++)
+			for(int i=0;i<K*G;i++)
 			{
 				int l;
 				file >> l;
@@ -81,9 +81,9 @@ void io::writeOutputFile(vector<int> subgraphs) {
 		if (subgraphs.at(i) > 0)
 		{
 			int m = subgraphs.at(i) - 1;
-			int a = m/K;
-			int b = m%K;
-			output[b].push_back(a);
+			int a = m/G;
+			int b = m%G;
+			output[a].push_back(b);
 		}
 	}
 	ofstream file (outputFile);

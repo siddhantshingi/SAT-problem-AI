@@ -4,6 +4,7 @@ constraint::constraint () {
 }
 
 constraint::constraint (vector< vector<int> > gr, int g, int e, int k) {
+	// is doing the below ok ? will it do deep copy?
 	graph = gr;
 	G = g;
 	E = e;
@@ -18,7 +19,7 @@ vector< vector<int> > constraint::clause1(vector< vector<int> > setOfClauses) {
 		vector<int> v;
 		for(int i=0; i<G; i++)
 		{
-			int l = j*K+i + 1;
+			int l = j*G+i + 1;
 			v.push_back(l);
 		}
 		setOfClauses.push_back(v);
@@ -36,9 +37,9 @@ vector< vector<int> > constraint::clause2(vector< vector<int> > setOfClauses) {
 			int j = graph.at(i).at(n);
 			for(int m=0; m<K; m++)
 			{
-				int l1 = m*K + i + 1;
-				int l2 = m*K + j + 1;
-				int d = (K-1)*K + (G-1) + c + 1;
+				int l1 = m*G + i + 1;
+				int l2 = m*G + j + 1;
+				int d = (K-1)*G + (G-1) + c + 1;
 				dummy_var.push_back(d);
 				c++;
 
@@ -78,9 +79,9 @@ vector< vector<int> > constraint::clause3(vector< vector<int> > setOfClauses) {
 				vector<int> dummy_var;
 				for(int i=0; i<G; i++)
 				{
-					int l1 = m*K + i + 1;
-					int l2 = n*K + i + 1;
-					int d = (K-1)*K + (G-1) + c + 1;
+					int l1 = m*G + i + 1;
+					int l2 = n*G + i + 1;
+					int d = (K-1)*G + (G-1) + c + 1;
 					dummy_var.push_back(d);
 					c++;
 
@@ -121,15 +122,15 @@ bool constraint::Edge(int i, int j) {
 vector< vector<int> > constraint::clause4(vector< vector<int> > setOfClauses) {
 	for(int i=0; i<G; i++)
 	{
-		for(int j=0; j<G; j++)
+		for(int j=i+1; j<G; j++)
 		{
 			if (!Edge(i,j) && (i != j) && !Edge(j,i)) //Edge(i,j) returns true if graph k ith row me j is found
 			{
 				cout<<"    edge not found in i: "<<i<<" j: "<<j<<endl;
 				for(int m=0; m<K; m++)
 				{
-					int l1 = m*K + i + 1;
-					int l2 = m*K + j + 1;
+					int l1 = m*G + i + 1;
+					int l2 = m*G + j + 1;
 					vector<int> v;
 					v.push_back(-1*l1);
 					v.push_back(-1*l2);
@@ -139,4 +140,13 @@ vector< vector<int> > constraint::clause4(vector< vector<int> > setOfClauses) {
 		}
 	}
 	return setOfClauses;
+}
+void constraint::printclauses(vector<vector<int>> myvec){
+	for(int i=0;i<myvec.size();i++){
+		for(int j=0;j<myvec.at(i).size();j++){
+			cout << myvec.at(i).at(j)<< " ";
+		}
+		cout<< endl;
+	}
+	cout << "clauses printed"<<endl;;
 }
