@@ -126,7 +126,7 @@ vector< vector<int> > constraint::clause4(vector< vector<int> > setOfClauses) {
 		{
 			if (!Edge(i,j) && (i != j) && !Edge(j,i)) //Edge(i,j) returns true if graph k ith row me j is found
 			{
-				cout<<"    edge not found in i: "<<i<<" j: "<<j<<endl;
+				// cout<<"    edge not found in i: "<<i<<" j: "<<j<<endl;
 				for(int m=0; m<K; m++)
 				{
 					int l1 = m*G + i + 1;

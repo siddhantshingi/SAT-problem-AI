@@ -26,6 +26,7 @@ void io::readInputFile() {
 			file >> s >> l;
 			graph.at(s-1).push_back(l-1);
 		}
+		// cout<<"G is "<<G<< " E is "<< E<< " K is "<<K<<endl;
 	}
 	else 
 		cout << "Unable to open file"; 
@@ -35,6 +36,7 @@ void io::writeInputFile_SAT(vector< vector<int> > cons, int c, int clauses) {
 	ofstream file (inputFile_SAT);
 	if (file.is_open())
 	{
+		// cout <<"chatl kdfls"<<endl;
 		file<<"p cnf "<<G*K + c - 1<<" "<<clauses<<endl;
 		for(int i=0; i<cons.size(); i++)
 		{

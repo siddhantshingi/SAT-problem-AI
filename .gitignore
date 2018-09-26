@@ -1,0 +1,9 @@
+*.graph
+main1
+main2
+makegraph
+*.txt
+*.satinput
+*.satoutput
+*.subgraphs
+

@@ -1,3 +1,3 @@
-./main1
-minisat input_SAT.txt output_SAT.txt
-./main2
+./run1.sh $1
+minisat $1.satinput $1.satoutput
+./run2.sh $1

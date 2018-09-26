@@ -7,9 +7,10 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
-	io *s = new io("input.txt","output.txt","input_SAT.txt","output_SAT.txt");
+	string inputfilenametemp = argv[1];
+	io *s = new io(inputfilenametemp+".graph",inputfilenametemp+".subgraphs",inputfilenametemp+".satinput",inputfilenametemp+".satoutput");
 	vector<int> vect;
 	s->readInputFile();
 	vect = s->readOutputFile_SAT();
