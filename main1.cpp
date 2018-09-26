@@ -13,31 +13,32 @@ int main()
 	s->readInputFile();
 
 	constraint *t = new constraint(s->getGraph(),s->getG(),s->getE(),s->getK());
-	cout<<"input file read done"<<endl;
+	// cout<<"input file read done"<<endl;
 	vector< vector<int> > vect;
 	// t->printclauses(vect);
 
 	vect = t->clause1(vect);
-	cout<<"Clause1 done"<<endl;
-	cout<<"vector size: "<<vect.size()<<endl;
+	// cout<<"Clause1 done"<<endl;
+	// cout<<"vector size: "<<vect.size()<<endl;
+
 	// t->printclauses(vect);
 	
 	vect = t->clause2(vect);
-	cout<<"Clause2 done"<<endl;
-	cout<<"vector size: "<<vect.size()<<endl;
+	// cout<<"Clause2 done"<<endl;
+	// cout<<"vector size: "<<vect.size()<<endl;
 	// t->printclauses(vect);
 	
 	vect = t->clause3(vect);
-	cout<<"Clause3 done"<<endl;
-	cout<<"vector size: "<<vect.size()<<endl;
+	// cout<<"Clause3 done"<<endl;
+	// cout<<"vector size: "<<vect.size()<<endl;
 	// t->printclauses(vect);
 	
 	vect = t->clause4(vect);
-	cout<<"Clause4 done"<<endl;
-	cout<<"vector size: "<<vect.size()<<endl;
+	// cout<<"Clause4 done"<<endl;
+	// cout<<"vector size: "<<vect.size()<<endl;
 	// t->printclauses(vect);
 	
-	s->writeInputFile_SAT(vect);
+	s->writeInputFile_SAT(vect,t->getNumDummyVar(),vect.size());
 	
 	return 0;
 }

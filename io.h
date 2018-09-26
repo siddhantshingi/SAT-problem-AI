@@ -32,7 +32,7 @@ class io
 
 		void readInputFile();
 
-		void writeInputFile_SAT(vector< vector<int> > subgraphs);
+		void writeInputFile_SAT(vector< vector<int> > subgraphs, int c, int clauses);
 
 		vector<int> readOutputFile_SAT();
 

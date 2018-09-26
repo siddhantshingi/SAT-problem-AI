@@ -150,3 +150,7 @@ void constraint::printclauses(vector<vector<int>> myvec){
 	}
 	cout << "clauses printed"<<endl;;
 }
+
+int constraint::getNumDummyVar() {
+	return c;
+}

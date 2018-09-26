@@ -31,11 +31,11 @@ void io::readInputFile() {
 		cout << "Unable to open file"; 
 }
 
-void io::writeInputFile_SAT(vector< vector<int> > cons) {
+void io::writeInputFile_SAT(vector< vector<int> > cons, int c, int clauses) {
 	ofstream file (inputFile_SAT);
 	if (file.is_open())
 	{
-		file<<"p cnf "<<endl;
+		file<<"p cnf "<<G*K + c - 1<<" "<<clauses<<endl;
 		for(int i=0; i<cons.size(); i++)
 		{
 			for(int j=0; j<cons.at(i).size(); j++)
