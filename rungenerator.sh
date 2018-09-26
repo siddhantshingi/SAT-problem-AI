@@ -1,0 +1,1 @@
+./makegraph -F=test -N=$1 -K=$2 -S=run.sh -U=$3 -V=0
