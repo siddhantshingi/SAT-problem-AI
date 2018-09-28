@@ -32,6 +32,16 @@ void io::readInputFile() {
 		cout << "Unable to open file"; 
 }
 
+void io::readInputSize() {
+	ifstream file (inputFile);
+	if (file.is_open())
+	{
+		file >> G >> E >> K;
+	}
+	else 
+		cout << "Unable to open file"; 
+}
+
 void io::writeInputFile_SAT(vector< vector<int> > cons, int c, int clauses) {
 	ofstream file (inputFile_SAT);
 	if (file.is_open())

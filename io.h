@@ -31,6 +31,7 @@ class io
 		io(string inFile, string outFile,string inFile_SAT, string outFile_SAT);
 
 		void readInputFile();
+		void readInputSize();
 
 		void writeInputFile_SAT(vector< vector<int> > subgraphs, int c, int clauses);
 
