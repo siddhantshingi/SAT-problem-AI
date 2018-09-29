@@ -19,6 +19,10 @@ int main(int argc, char** argv)
 	// cout<<"input file read done"<<endl;
 	vector< vector<int> > vect;
 	// t->printclauses(vect);
+	// vector<int> tempvec;
+	// tempvec.push_back(1);
+	// vect.push_back(tempvec);
+	vect = t->clause5(vect);
 
 	vect = t->clause1(vect);
 	// cout<<"Clause1 done"<<endl;

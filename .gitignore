@@ -6,4 +6,4 @@ makegraph
 *.satinput
 *.satoutput
 *.subgraphs
-
+!minisat

@@ -141,6 +141,21 @@ vector< vector<int> > constraint::clause4(vector< vector<int> > setOfClauses) {
 	}
 	return setOfClauses;
 }
+vector< vector<int> > constraint::clause5(vector< vector<int> > setOfClauses) {
+	// vector<int> mytemp;
+	// mytemp.push_back(1);
+	// setOfClauses.push_back(mytemp);
+	for(int i=0;i<K-1;i++){
+		int l1 = i*G + 1;
+		int l2 = (i+1)*G +1;
+		vector<int> v;
+		v.push_back(1*l1);
+		v.push_back(-1*l2);
+		setOfClauses.push_back(v);
+	}
+	return setOfClauses;
+}
+
 void constraint::printclauses(vector<vector<int>> myvec){
 	for(int i=0;i<myvec.size();i++){
 		for(int j=0;j<myvec.at(i).size();j++){
