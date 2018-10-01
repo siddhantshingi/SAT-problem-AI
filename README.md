@@ -3,7 +3,7 @@
 For compiling the core programs  
 `g++ -o makegraph graphgenerator.cpp  `  
 For compiling the tester program  
-Install MiniSat and put the binary minisat in this folder itself  
+Install MiniSat and put the binary of any other minisat if you need in this folder itself  
 `./run.sh test`  
 For running the program if the file was test.graph  
 `./rungenerator.sh G K U`  
