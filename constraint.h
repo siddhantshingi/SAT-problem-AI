@@ -18,6 +18,7 @@ class constraint
 		vector< vector<int> > graph;
 		int G,E,K;
 		int c; //no of dummy variables
+		vector< vector<int> > Clauses;
 			
 		/**
 		 * Empty constructor.
@@ -31,19 +32,20 @@ class constraint
 		 */
 		constraint(vector< vector<int> > gr, int g, int e, int k);
 
-		vector< vector<int> > clause1(vector< vector<int> > setOfClauses);
+		void clause1();
 
-		vector< vector<int> > clause2(vector< vector<int> > setOfClauses);
+		void clause2();
 		
-		vector< vector<int> > clause3(vector< vector<int> > setOfClauses);
+		void clause3();
 		
 		bool Edge(int i, int j);
 
-		vector< vector<int> > clause4(vector< vector<int> > setOfClauses);
-		vector< vector<int> > clause5(vector< vector<int> > setOfClauses);
-		vector< vector<int> > clause6(vector< vector<int> > setOfClauses);
+		void clause4();
+		void clause5();
+		void clause6();
 		void printclauses(vector< vector<int> > myvec);
 		int getNumDummyVar();
+		vector< vector<int> > getClauses();
 };
 #endif
 

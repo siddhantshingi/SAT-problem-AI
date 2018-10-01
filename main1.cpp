@@ -22,31 +22,31 @@ int main(int argc, char** argv)
 	// vector<int> tempvec;
 	// tempvec.push_back(1);
 	// vect.push_back(tempvec);
-	vect = t->clause6(vect);
+	t->clause6();
 	// cout<< "6th clause applied"<<endl;
 	// t->printclauses(vect);
 
-	vect = t->clause1(vect);
+	t->clause1();
 	// cout<<"Clause1 done"<<endl;
 	// cout<<"vector size: "<<vect.size()<<endl;
 
 	// t->printclauses(vect);
 	
-	vect = t->clause2(vect);
+	t->clause2();
 	// cout<<"Clause2 done"<<endl;
 	// cout<<"vector size: "<<vect.size()<<endl;
 	// t->printclauses(vect);
 	
-	vect = t->clause3(vect);
+	t->clause3();
 	// cout<<"Clause3 done"<<endl;
 	// cout<<"vector size: "<<vect.size()<<endl;
 	// t->printclauses(vect);
 	
-	vect = t->clause4(vect);
+	t->clause4();
 	// cout<<"Clause4 done"<<endl;
 	// cout<<"vector size: "<<vect.size()<<endl;
 	// t->printclauses(vect);
-	
+	vect = t->getClauses();
 	s->writeInputFile_SAT(vect,t->getNumDummyVar(),vect.size());
 	
 	return 0;

@@ -12,7 +12,7 @@ constraint::constraint (vector< vector<int> > gr, int g, int e, int k) {
 	c = 1;
 }
 
-vector< vector<int> > constraint::clause1(vector< vector<int> > setOfClauses) {
+void constraint::clause1() {
 
 	for(int j=0; j<K; j++)
 	{
@@ -22,13 +22,12 @@ vector< vector<int> > constraint::clause1(vector< vector<int> > setOfClauses) {
 			int l = j*G+i + 1;
 			v.push_back(l);
 		}
-		setOfClauses.push_back(v);
+		Clauses.push_back(v);
 	}
-	return setOfClauses;
-
+	
 }
 
-vector< vector<int> > constraint::clause2(vector< vector<int> > setOfClauses) {
+void constraint::clause2() {
 	for(int i=0; i<G; i++)
 	{
 		for(int n=0; n<graph.at(i).size(); n++)
@@ -56,20 +55,20 @@ vector< vector<int> > constraint::clause2(vector< vector<int> > setOfClauses) {
 				v3.push_back(l2);
 				v3.push_back(-1*d);
 
-				setOfClauses.push_back(v1);
-				setOfClauses.push_back(v2);
-				setOfClauses.push_back(v3);
+				Clauses.push_back(v1);
+				Clauses.push_back(v2);
+				Clauses.push_back(v3);
 					
 			}
-			setOfClauses.push_back(dummy_var);
+			Clauses.push_back(dummy_var);
 	
 		}
 		
 	}
-	return setOfClauses;
+	
 }
 
-vector< vector<int> > constraint::clause3(vector< vector<int> > setOfClauses) {
+void constraint::clause3() {
 	for(int m=0; m<K; m++)
 	{
 		for(int n=0; n<K; n++)
@@ -98,16 +97,15 @@ vector< vector<int> > constraint::clause3(vector< vector<int> > setOfClauses) {
 					v3.push_back(-1*l2);
 					v3.push_back(-1*d);
 
-					setOfClauses.push_back(v1);
-					setOfClauses.push_back(v2);
-					setOfClauses.push_back(v3);
+					Clauses.push_back(v1);
+					Clauses.push_back(v2);
+					Clauses.push_back(v3);
 				}
-				setOfClauses.push_back(dummy_var);
+				Clauses.push_back(dummy_var);
 	
 			}
 		}
 	}
-	return setOfClauses;
 }
 
 bool constraint::Edge(int i, int j) {
@@ -119,7 +117,7 @@ bool constraint::Edge(int i, int j) {
 	return false;
 }
 
-vector< vector<int> > constraint::clause4(vector< vector<int> > setOfClauses) {
+void constraint::clause4() {
 	for(int i=0; i<G; i++)
 	{
 		for(int j=i+1; j<G; j++)
@@ -134,14 +132,14 @@ vector< vector<int> > constraint::clause4(vector< vector<int> > setOfClauses) {
 					vector<int> v;
 					v.push_back(-1*l1);
 					v.push_back(-1*l2);
-					setOfClauses.push_back(v);
+					Clauses.push_back(v);
 				}
 			}
 		}
 	}
-	return setOfClauses;
 }
-vector< vector<int> > constraint::clause5(vector< vector<int> > setOfClauses) {
+
+void constraint::clause5() {
 	// vector<int> mytemp;
 	// mytemp.push_back(1);
 	// setOfClauses.push_back(mytemp);
@@ -151,14 +149,14 @@ vector< vector<int> > constraint::clause5(vector< vector<int> > setOfClauses) {
 		vector<int> v;
 		v.push_back(1*l1);
 		v.push_back(-1*l2);
-		setOfClauses.push_back(v);
+		Clauses.push_back(v);
 	}
-	return setOfClauses;
 }
-vector<vector<int> > constraint::clause6(vector< vector<int> > setOfClauses){
+
+void constraint::clause6(){
 	vector<int> mytemp;
 	mytemp.push_back(1);
-	setOfClauses.push_back(mytemp);
+	Clauses.push_back(mytemp);
 	vector<int> setvar;
 	setvar.push_back(0);
 	int graphdecidedcounter = 0;
@@ -182,12 +180,12 @@ vector<vector<int> > constraint::clause6(vector< vector<int> > setOfClauses){
 						int l1 = j*G+i+1;
 						vector<int> temp;
 						temp.push_back(-l1);
-						setOfClauses.push_back(temp);
+						Clauses.push_back(temp);
 					}
 					int l1 = (graphdecidedcounter+1)*G + i + 1;
 					vector<int> temp;
 					temp.push_back(l1);
-					setOfClauses.push_back(temp);
+					Clauses.push_back(temp);
 					graphdecidedcounter++;
 					setvar.push_back(i);
 				}
@@ -200,9 +198,8 @@ vector<vector<int> > constraint::clause6(vector< vector<int> > setOfClauses){
 		vector<int> v;
 		v.push_back(1*l1);
 		v.push_back(-1*l2);
-		setOfClauses.push_back(v);
+		Clauses.push_back(v);
 	}
-	return setOfClauses;
 }
 
 void constraint::printclauses(vector<vector<int>> myvec){
@@ -217,4 +214,8 @@ void constraint::printclauses(vector<vector<int>> myvec){
 
 int constraint::getNumDummyVar() {
 	return c;
+}
+
+vector< vector<int> > constraint::getClauses() {
+	return Clauses;
 }
