@@ -155,6 +155,47 @@ vector< vector<int> > constraint::clause5(vector< vector<int> > setOfClauses) {
 	}
 	return setOfClauses;
 }
+vector<vector<int> > constraint::clause6(vector< vector<int> > setOfClauses){
+	vector<int> mytemp;
+	mytemp.push_back(1);
+	setOfClauses.push_back(mytemp);
+	vector<int> setvar;
+	setvar.push_back(0);
+	int graphdecidedcounter = 0;
+	int tempsetvarsize= 0;
+	while(tempsetvarsize!=setvar.size() && graphdecidedcounter<K-1){
+		tempsetvarsize = setvar.size();
+		for(int i=0;i<G;i++){
+			auto it = find(setvar.begin(),setvar.end(),i);
+			if(it == setvar.end()){
+				bool exclusive= true;
+				for(int j:setvar){
+					if(Edge(i,j)||Edge(j,i)){
+						exclusive=false;
+						break;
+					}
+				}
+				if(exclusive){
+					//set i to true in graphdecidedcounter+1 and false for all 0 to graphdecidedcounter
+					// cout << " setting stuff for i "<< i << " and graphdecidecounter "<< graphdecidedcounter<<endl;
+					for(int j=0;j<=graphdecidedcounter;j++){
+						int l1 = j*G+i+1;
+						vector<int> temp;
+						temp.push_back(-l1);
+						setOfClauses.push_back(temp);
+					}
+					int l1 = (graphdecidedcounter+1)*G + i + 1;
+					vector<int> temp;
+					temp.push_back(l1);
+					setOfClauses.push_back(temp);
+					graphdecidedcounter++;
+					setvar.push_back(i);
+				}
+			}
+		}
+	}
+	return setOfClauses;
+}
 
 void constraint::printclauses(vector<vector<int>> myvec){
 	for(int i=0;i<myvec.size();i++){

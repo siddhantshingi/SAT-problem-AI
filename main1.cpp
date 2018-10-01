@@ -22,7 +22,9 @@ int main(int argc, char** argv)
 	// vector<int> tempvec;
 	// tempvec.push_back(1);
 	// vect.push_back(tempvec);
-	vect = t->clause5(vect);
+	vect = t->clause6(vect);
+	// cout<< "6th clause applied"<<endl;
+	// t->printclauses(vect);
 
 	vect = t->clause1(vect);
 	// cout<<"Clause1 done"<<endl;

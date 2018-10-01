@@ -40,6 +40,7 @@ class constraint
 
 		vector< vector<int> > clause4(vector< vector<int> > setOfClauses);
 		vector< vector<int> > clause5(vector< vector<int> > setOfClauses);
+		vector< vector<int> > clause6(vector< vector<int> > setOfClauses);
 		void printclauses(vector<vector<int>> myvec);
 		int getNumDummyVar();
 };
