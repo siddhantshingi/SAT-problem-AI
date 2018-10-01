@@ -111,7 +111,12 @@ void io::writeOutputFile(vector<int> subgraphs) {
 			file<<"#"<<i+1<<" "<<output[i].size()<<endl;
 			for(int j=0; j<output[i].size(); j++)
 			{
-				file<<output[i].at(j)+1<<" ";
+				if(j!= output[i].size()-1){
+					file<<output[i].at(j)+1<<" ";
+				}else{
+					file<<output[i].at(j)+1;
+				}
+				
 			}
 			file<<endl;
 		}
