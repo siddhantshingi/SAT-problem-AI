@@ -1,9 +1,10 @@
 #ifndef CONSTRAINT_H
 #define CONSTRAINT_H
 
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
 #include <string.h>
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <vector>
 
@@ -41,7 +42,7 @@ class constraint
 		vector< vector<int> > clause4(vector< vector<int> > setOfClauses);
 		vector< vector<int> > clause5(vector< vector<int> > setOfClauses);
 		vector< vector<int> > clause6(vector< vector<int> > setOfClauses);
-		void printclauses(vector<vector<int>> myvec);
+		void printclauses(vector< vector<int> > myvec);
 		int getNumDummyVar();
 };
 #endif
