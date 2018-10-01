@@ -194,6 +194,14 @@ vector<vector<int> > constraint::clause6(vector< vector<int> > setOfClauses){
 			}
 		}
 	}
+	for(int i=graphdecidedcounter+1;i<K-1;i++){
+		int l1 = i*G + 1;
+		int l2 = (i+1)*G +1;
+		vector<int> v;
+		v.push_back(1*l1);
+		v.push_back(-1*l2);
+		setOfClauses.push_back(v);
+	}
 	return setOfClauses;
 }
 
